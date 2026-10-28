@@ -69,4 +69,5 @@ class ICCFClient:
         return g
 
     def print_available_methods(self):
+        """Print all available methods."""
         print(self.client)

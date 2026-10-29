@@ -1,3 +1,7 @@
+'''
+A client to the ICCF SOAP API.
+'''
+
 import urllib.request
 from suds.client import Client
 from suds.transport.http import HttpTransport
@@ -57,7 +61,9 @@ class ICCFClient:
                 "daysOpponent", "hoursOpponent", "minutesOpponent", "serverInfo",
                 "gameLink", "eventDate"
             ]
-            class Game: pass
+            class Game:
+                pass
+
             game_obj = Game()
             for i, field in enumerate(fields):
                 if i < len(g):
@@ -65,7 +71,7 @@ class ICCFClient:
                 else:
                     setattr(game_obj, field, None)
             return game_obj
-        
+
         return g
 
     def print_available_methods(self):

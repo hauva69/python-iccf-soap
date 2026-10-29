@@ -1,3 +1,7 @@
+'''
+Tests for iccf_xffc.
+'''
+
 from iccf_xfcc import ICCFClient
 
 def test_client_init():

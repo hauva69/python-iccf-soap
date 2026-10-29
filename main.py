@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 '''
 Print my ICCF games.
@@ -21,11 +21,10 @@ def _main():
         if games:
             print(f"\nFound {len(games)} active game(s):")
             for game in games:
-                game_id = getattr(game, 'id', 'Unknown')
-                white = getattr(game, 'white', 'Unknown')
-                black = getattr(game, 'black', 'Unknown')
-                my_turn = getattr(game, 'myTurn', False)
-                turn_str = "Your turn" if my_turn else "Opponent's turn"
+                game_id = game.iccf_id or 'Unknown'
+                white = game.headers.get('White', 'Unknown')
+                black = game.headers.get('Black', 'Unknown')
+                turn_str = "Your turn" if game.my_turn else "Opponent's turn"
                 print(f"[{game_id}] {white} vs {black} - {turn_str}")
         else:
             print("\nNo active games found.")

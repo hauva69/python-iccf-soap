@@ -1,7 +1,7 @@
 .PHONY: test install clean
 
 test:
-	pytest tests/
+	PYTHONPATH=. pytest tests/
 
 install:
 	pip install -e .

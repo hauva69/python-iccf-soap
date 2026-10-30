@@ -135,6 +135,8 @@ class ICCFClient:
         if date:
             game_obj.headers["Date"] = str(date)
 
+        return game_obj
+
     def print_available_methods(self):
         """Print all available methods."""
         print(self.client)

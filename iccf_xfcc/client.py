@@ -9,6 +9,8 @@ from suds.transport.http import HttpTransport
 import chess
 import chess.pgn
 
+# pylint: disable=too-many-instance-attributes)
+# pylint: disable=too-few-public-methods
 class ICCFGame(chess.pgn.Game):
     """Extension of chess.pgn.Game to include ICCF-specific fields."""
     def __init__(self, *args, **kwargs):
@@ -96,9 +98,7 @@ class ICCFClient:
         game_obj.headers["Site"] = str(get_val(4, "site") or "ICCF")
         game_obj.my_turn = bool(get_val(5, "myTurn"))
         game_obj.has_white = bool(get_val(6, "hasWhite"))
-        
         # moves = get_val(7, "moves") - could be parsed into game_obj if in SAN/UCI
-        
         game_obj.draw_offered = bool(get_val(8, "drawOffered"))
         game_obj.headers["Message"] = str(get_val(9, "message") or "")
         game_obj.white_title = get_val(10, "whiteTitle")
@@ -112,7 +112,6 @@ class ICCFClient:
         game_obj.stage = get_val(18, "stage")
         game_obj.board_number = get_val(19, "board")
         game_obj.headers["TimeControl"] = str(get_val(20, "timeControl") or "")
-        
         # setup = get_val(21, "setup")
         fen = get_val(22, "fen")
         if fen:
@@ -121,7 +120,6 @@ class ICCFClient:
 
         game_obj.headers["Result"] = str(get_val(23, "result") or "*")
         game_obj.headers["Variant"] = str(get_val(24, "variant") or "Standard")
-        
         game_obj.days_player = get_val(25, "daysPlayer")
         game_obj.hours_player = get_val(26, "hoursPlayer")
         game_obj.minutes_player = get_val(27, "minutesPlayer")
@@ -130,7 +128,6 @@ class ICCFClient:
         game_obj.minutes_opponent = get_val(30, "minutesOpponent")
         game_obj.server_info = get_val(31, "serverInfo")
         game_obj.game_link = get_val(32, "gameLink")
-        
         date = get_val(33, "eventDate")
         if date:
             game_obj.headers["Date"] = str(date)

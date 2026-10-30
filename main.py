@@ -33,7 +33,9 @@ def _main():
     except suds.WebFault as e:
         print(f"\nICCF service error: {e}", file=sys.stderr)
     except Exception as e: # pylint: disable=broad-exception-caught
+        import traceback
         print(f"\nAn unexpected error occurred: {e}", file=sys.stderr)
+        traceback.print_exc()
 
 if __name__ == "__main__":
     _main()

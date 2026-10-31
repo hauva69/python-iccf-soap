@@ -2,7 +2,7 @@
 Tests for iccf_xffc.
 '''
 
-from iccf_xfcc import ICCFClient # pylint: disable=import-error
+from iccf_xfcc import ICCFClient
 
 def test_client_init():
     '''Test the initialization.'''
